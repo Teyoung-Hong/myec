@@ -1,0 +1,135 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// show
+.inner__show{
+}
+
+.user__top{
+  display: flex;  
+}
+
+.user__top--left{
+  margin-right: 15vw;   
+}
+
+.user__top--right{
+  font-sizE: 2rem;  
+}
+
+.user__left--profile-image{
+  
+}
+
+.user__left--profile-image img{
+  width: 15rem;
+  height: 15rem;  
+}
+
+.user__right--user-name{
+}
+
+.user__right--user-name-kana{
+}
+
+.user__right--gender{
+  
+}
+
+.user__right--birth{
+  
+}
+
+.user__right--email{
+  
+}
+
+.user__tabs{
+  display: flex;
+  height:4rem;
+  line-height: 4rem;
+}
+
+.user__tab{
+  font-size: 2rem;
+  margin: 0 2rem;
+  cursor: pointer;
+}
+
+.user__content{
+  display: none;  
+}
+
+.form__address--new{
+    
+}
+
+.form__label{
+  width: 30%;
+  text-align: right;  
+}
+
+.user__address{
+  display: flex;  
+}
+
+.address__right{
+  
+}
+
+.address__items{
+  border-bottom: 1px solid #011627;
+  padding: 2rem;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+}
+
+.address__address{
+  display: flex;
+}
+
+.address__items p{
+  margin-right: 2rem;
+  text-align: right;
+}
+
+
+
+
+/* top */
+.inner__top{
+  width: 80vw;
+  margin: 0 auto;  
+  font-size: 2.5rem;
+}
+
+.top__top{
+  margin: 7rem auto;    
+}
+
+.top__middle{
+  width: 50vw;
+  margin: 3rem auto;  
+}
+
+.top__middle--top{
+  margin-bottom: 4rem;
+}
+
+.top__bottom{
+  margin-left: 70vw;
+  margin-top: 10rem;
+  font-size: 2rem;
+}
+
+.top__bottom--top{
+  
+}
+
+.top__bottom--bottom{
+  margin-left: 1rem; 
+  width:16rem;
+}
+

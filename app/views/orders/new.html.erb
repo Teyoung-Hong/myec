@@ -1,0 +1,26 @@
+<% total = 0 %>
+<% @carts.each do |c| %>
+  <%= link_to product_path(c.product.id) do %>
+    <%= c.product.artist_name %>
+    <%= c.product.album_name %>
+    <%= c.product.label %>
+    <%= c.product.jacket_image %>
+    <%= c.product.price %>
+    <% total += c.product.price * c.quantity %>
+  <% end %>
+  <p>小計：<%= total %>（税抜き）</p>
+  <p>送料:500</p>
+  <% all = total * 1.08 + 500 %>
+  <p>合計:<%= all.to_i %>（税込）</p>
+<% end %>
+
+
+<%= form_for @order do |o| %>
+  <h2>送付先</h2>
+  <!-- 住所のセレクトボックス -->
+  <%= o.collection_select :address_id, Address.all, :id, :sending_address %>
+  <h2>支払い方法</h2>
+  <%= o.select :payway, [['クレジットカード', '0'], ['銀行振込', '1'], ['コンビニ決済', '2'], ['手渡し', '3']] %>
+  <%= o.submit '購入する' %>
+<% end %>
+

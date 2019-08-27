@@ -1,0 +1,51 @@
+<div class="inner">
+  <div class="inner__index">
+    <div class="index__product">
+<!-- プロダクト　ループ処理 -->
+      <div class="product__all">
+        <% @products.each do |p| %>
+          <div class="product__wrapper">
+            <%= link_to product_path(p.id) do %>
+              <div class="product__image"><%= attachment_image_tag p, :jacket_image  %></div>
+              <div class="product__album-name"><%= p.album_name %></div>
+              <div class="product__artist-name"><%= p.artist_name %></div>
+            <% end %>
+<!-- いいね機能 -->
+            <% if p.fav_by?(current_user) %>
+              <%= link_to product_favorites_path(p.id), method: :delete do %>
+                <span class="fav fav__active">❤️</span><i class="fa fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to product_favorites_path(p.id), method: :post do %>
+                <span class="fav fav__deactive">♡</span><i class="fa fa-heart-o"></i>
+              <% end %>
+            <% end %>
+          </div><!-- product__wrapper -->
+        <% end %>
+        </div><!-- product__all -->
+
+<!-- ランキング機能 -->
+      <h1>Ranking this week</h1>
+      <div class="rank__all">
+      <% @rank.each.with_index(1) do |rank, i| %>
+        <div class="rank__wrapper">
+        <p class="rank__num"><%= i %></p>
+        <p class="rank__image"><%= attachment_image_tag rank, :jacket_image %></p>
+        <p class="rank__album-name"><%= rank.album_name %></p>
+        <p class=="rank__artist-name"><%= rank.artist_name %></p>
+        <p class="rank__fav-count"><%= rank.favorites.count %>いいね</p>
+        <% if rank.fav_by?(current_user) %>
+          <%= link_to product_favorites_path(rank.id), method: :delete do %>
+            いいねしてます<i class="fa fa-heart"></i>
+          <% end %>
+        <% else %>
+          <%= link_to product_favorites_path(rank.id), method: :post do %>
+            いいねしてません<i class="fa fa-heart-o"></i>
+          <% end %>
+        <% end %>
+        </div><!-- rank__wrapper -->
+      <% end %>
+      </div><!-- rank__all -->
+    </div>
+  </div>
+</div>

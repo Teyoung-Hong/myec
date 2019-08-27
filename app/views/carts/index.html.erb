@@ -1,0 +1,13 @@
+<% @carts = Cart.where(user_id: current_user.id) %>
+<% @carts.each do |c| %>
+  <%= link_to product_path(c.product.id) do %>
+    <%= c.product.artist_name %>
+    <%= c.product.album_name %>
+    <%= c.product.label %>
+    <%= c.product.jacket_image %>
+    <%= c.product.price %>
+  <% end %>
+<% end %>
+<p>合計金額：<%= @total_price %></p>
+
+<%= link_to 'Buy', new_order_path %>

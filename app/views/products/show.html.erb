@@ -1,0 +1,43 @@
+<div class="inner">
+<div class="inner__show">
+<div class="product__wrapper">
+<div class="product__left">
+<div class="product__left--jacket-image">
+<div class="product__right">
+<div class="inner">
+<div class="inner">
+<div class="inner">
+
+<%= attachment_image_tag @product, :jacket_image %>
+<%= @product.album_name %>
+<%= @product.price %>
+<%= @product.label %>
+<%= @product.artist_name %>
+<% if @product.sales_status == true %>
+  <p>On sale</p>
+<% else %>
+  <p>Out of sale</p>
+<% end %>
+<% @product.discs.each do |disc| %>
+  <%= disc.disc_name %>
+  <% disc.songs.each do |song| %>
+    <%= song.song_name %>
+  <% end %>
+<% end %>
+<% if current_admin %>
+  <%= link_to 'Delete album', admins_product_path, method: :delete %>
+<% end %>
+<% if current_user %>
+  <%= link_to 'Add cart', product_carts_path(@product.id), method: :post %>
+<% end %>
+
+<%= form_with model: @comment, url: product_comments_path(@product.id), method: :post,  id:'form__comment' do |c| %>
+  <%= c.text_area :comment, class:"field__text field__form input__comment" %>
+  <%= c.submit 'コメント' %>
+<% end %>
+
+<div class="inner__comment">
+<% @comments.each do |comment| %>
+  <%= comment.comment %>
+<% end %>
+</div>

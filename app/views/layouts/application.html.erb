@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yayoiken</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="header__logo wh">CD samurai</div>
+      <div class="header__line wh">|</div>
+      <nav class="header__nav">
+        <ul class="header__lists wh">
+          <% if user_signed_in? %> <!-- ユーザーサインイン時 -->
+            <li class="header__list">
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'MyPage', user_path(current_user) %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Cart', carts_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Contact', new_contact_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'LogOut', destroy_user_session_path, method: :delete %>
+            </li>
+          <% elsif admin_signed_in? %> <!-- 管理者サインイン時 -->
+            <li class="header__list">
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Users', admins_users_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Product', new_admins_product_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Genre', new_admins_genre_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Contact', admins_contacts_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'LogOut', destroy_admin_session_path, method: :delete %>
+            </li>
+          <% else %> <!-- 非ログイン時 -->
+            <li class="header__list">
+              <%= link_to 'Top', top_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li class="header__list">
+              <%= link_to 'LogIn', new_user_session_path %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+      <div class="search">
+        <!-- search form -->
+      </div>
+    </header>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+    <footer>
+      ©︎SteveHong, Inc. All rights reserved.
+    </footer>
+  </body>
+</html>

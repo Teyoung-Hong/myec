@@ -1,0 +1,17 @@
+<div class="inner">
+  <div class="inner__new">
+    <div class="form__new">
+      <%= form_with model: @genre, url: admins_genres_path, method: :post, id:'form__genre' do |genre| %>
+        <%= genre.text_field :genre_name, class:"field__text field__form input__genre" %>
+        <%= genre.submit 'Add' %>
+      <% end %>
+    </div>
+    <div class="inner__index">
+      <% @genres.each do |genre| %>
+        <div class="field__loop genres">
+          <%= genre.genre_name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

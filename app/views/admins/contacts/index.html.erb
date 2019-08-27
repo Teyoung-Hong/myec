@@ -1,0 +1,8 @@
+<% @contacts.each do |c| %>
+  <%= link_to admins_contact_path(c.id) do %>
+    <%= c.subject %>
+    <%= c.sender_name %>
+    <%= c.email %>
+    <%= c.checking_status %>
+  <% end %>
+<% end %>

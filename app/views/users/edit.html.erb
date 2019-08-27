@@ -1,0 +1,13 @@
+<%= form_for @user do |user| %>
+  <%= user.attachment_field :profile_image %>
+  <p>姓</p>
+  <%= user.text_field :first_name %>
+  <p>名</p>
+  <%= user.text_field :last_name %>
+  <p>セイ</p>
+  <%= user.text_field :first_name_kana %>
+  <p>メイ</p>
+  <%= user.text_field :last_name_lana %>
+  <%= user.submit 'submit' %>
+
+<% end %>

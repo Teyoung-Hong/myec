@@ -1,0 +1,133 @@
+<div class="inner">
+  <div class="inner__show">
+    <div class="user__top">
+      <div class="user__top--left">
+        <p class="user__left--profile-image">
+           <%= attachment_image_tag @user, :profile_image %>
+        </p> 
+      </div>
+      <div class="user_top--right">
+        <p class="user__right--user-name"> 
+          <%= @user.first_name %><%= @user.last_name %>
+        </p>
+        <p class="user__right--user-name-kana"> 
+          <%= @user.first_name_kana %><%= @user.last_name_lana %>
+        </p>
+        <p class="user__right--gender">
+          <%= @user.gender %>
+        </p> 
+        <p class="user__right--birth">
+          <%= @user.birth %>
+        </p> 
+        <p class="user__right--email">
+          <%= @user.email %>
+        </p> 
+      </div>
+    </div>
+  </div><!-- user__top -->
+  <ul class="user__tabs">
+    <li class="user__tab is_selected">
+      Carts
+    </li>
+    <li class="user__tab">
+      Ordered
+    </li>
+    <li class="user__tab">
+      Addresses
+    </li>
+    <li class="user__tab">
+      Favorites
+    </li>
+  </ul><!-- user__tab -->
+
+  <div id="cart" class="user__cart user__content is_active">
+<% @carts.each do |c| %>
+  <%= c.product.album_name %>
+<% end %>
+  </div>
+  <div id="order" class="user__order user__content">
+<% @order.each do |o| %>
+  <%= o.created_at %>
+  <% o.ordered_products.each do |op| %>
+    <%= op.genre.genre_name %>
+    <%= op.product_name %>
+    <%= op.artist_name %>
+    <%= attachment_image_tag op, :jacket_image %>
+    <%= op.price %>
+  <% end %>
+<% end %>
+  </div>
+  <div id="address" class="user__address user__content">
+    <div class="address__left">
+      <%= form_for @ad, url: addresses_path, method: :post  do |ad| %>
+        <p class="form__adress--new">
+          <p class=="form__label">送付先住所</p>
+          <%= ad.text_field :sending_address %>
+        </p>
+        <p class="form__adress--new">
+          <p class=="form__label">電話番号</p>
+          <%= ad.text_field :phone %>
+        </p>
+        <p class="form__adress--new">
+          <p class=="form__label">郵便番号</p>
+          <%= ad.text_field :postal_code %>
+        </p>
+        <p class="form__adress--new">
+          <p class=="form__label">受取人氏名（漢字）</p>
+          <%= ad.text_field :receiver_name %>
+        </p>
+        <p class="form__adress--new">
+          <p class=="form__label">受取人（カナ）</p>
+          <%= ad.text_field :receiver_name_kana %>
+        </p>
+        <p class="form__adress--new">
+          <%= ad.submit 'Add address' %>
+        </p>
+      <% end %>
+    </div><!-- address__left -->
+    <div class="address__right">
+      <% @user.addresses.each do |ad| %>
+        <div class="address__items">
+          <p class="address__address">
+            <p>
+              送付先住所
+            </p>
+            <%= ad.sending_address %>
+          </p>
+          <p class="addrss__address">
+            <p>
+              電話番号
+            </p>
+            <%= ad.phone %>
+          </p>
+          <p class="addrss__address">
+            <p>
+              郵便番号
+            </p>
+            <%= ad.postal_code %>
+          </p>
+          <p class="addrss__address">
+            <p>
+              受取人氏名
+            </p>
+            <%= ad.receiver_name %>
+          </p>
+          <p class="addrss__address">
+            <p>
+              受取人シメイ
+            </p>
+            <%= ad.receiver_name_kana %>
+          </p>
+        </div>
+      <% end %>
+    </div><!--  address__right-->
+  </div>
+  <div id="fav" class="user__fav user__content">
+<% @fav.each do |f| %>
+  <%= f.product.album_name %>
+  <%= f.product.artist_name %>
+  <%= f.product.price %>
+<% end %>
+  </div>
+</div>
+
