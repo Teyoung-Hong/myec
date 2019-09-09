@@ -1,5 +1,4 @@
 $(function(){
-  alert('can you see me?');
   $(document).on('ajax:succress', 'form', function(e){
     console.log(e);
     $('.input__genre').val('');

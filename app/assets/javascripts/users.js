@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-  alert('loadded');
-
   $('.user__tab').click(function(){
     var index = $('.user__tab').index(this);
     $('.user__content').removeClass('is_active');

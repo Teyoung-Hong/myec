@@ -1,6 +1,6 @@
 class CreateAddresses < ActiveRecord::Migration[5.2]
   def change
-    create_table :addresses do |t|
+    create_table :addresses, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.integer :user_id
       t.string :phone
       t.string :postal_code

@@ -26,6 +26,12 @@ $(document).ready(function(){
     $('.inner__index').append('<p class="genre">' + e.detail[0] + '</p>')
   })
 
+  // show contact_reply
+  $('.btn__reply').click(function(){
+    $('.reply__wrapper').css('display', 'block');
+  })
+
+
   // User function
   // add comment
   $(document).on('ajax:success', '#form__comment', function(e){

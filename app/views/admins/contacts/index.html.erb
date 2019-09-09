@@ -5,4 +5,11 @@
     <%= c.email %>
     <%= c.checking_status %>
   <% end %>
-<% end %>
+  <div class="btn__reply">返信する</div>
+  <div class="reply__wrapper">
+    <%= form_for @new_contact, url: admins_contact_contact_replies_path(c.id) do |n| %>
+      <%= n.text_area :body %>
+      <%= n.submit '送信する' %>
+    <% end %>
+  </div>
+ <% end %>

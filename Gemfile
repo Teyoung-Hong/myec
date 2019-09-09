@@ -81,3 +81,7 @@ gem 'pry-rails'
 gem 'pry-byebug'
 
 gem 'omniauth-facebook'
+
+gem 'letter_opener' #後でtest環境に移す
+
+gem 'ransack'

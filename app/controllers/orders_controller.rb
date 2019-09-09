@@ -15,13 +15,14 @@ class OrdersController < ApplicationController
     carts = Cart.where(user_id: current_user)
     order.user_id = current_user.id
     carts.each do |c|
-      ordered = order.ordered_product.build # 購入済み商品の取得
+      ordered = order.ordered_products.build # 購入済み商品の取得
       ordered.genre_id = c.product.genre_id
       ordered.artist_name = c.product.artist_name
       ordered.product_name = c.product.album_name
       ordered.label = c.product.label
       ordered.price = c.product.price
       ordered.jacket_image_id = c.product.jacket_image_id
+      ordered.quantity = c.quantity
       ordered.save
     end
     order.save
