@@ -13,6 +13,11 @@
 <%= @product.price %>
 <%= @product.label %>
 <%= @product.artist_name %>
+<% if @product.stock != 0 %>
+  <%= @product.stock %>
+<% else %>
+  <p>売り切れ</p>
+<% end %>
 <% if @product.sales_status == true %>
   <p>On sale</p>
 <% else %>

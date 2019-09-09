@@ -1,12 +1,16 @@
 class CartsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @carts = Cart.where(user_id: current_user.id)
     tp = 0
-    @total_price = @carts.each do |c| 
-      total = c.product.price * 1.08 * c.quantity
-      tp += total
-    end
+    @total_price = 
+      @carts.each do |c| 
+        total = c.product.price * 1.08 * c.quantity
+        tp += total
+        return tp
+      end
   end
 
   def show

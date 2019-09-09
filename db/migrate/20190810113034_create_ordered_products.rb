@@ -1,6 +1,6 @@
 class CreateOrderedProducts < ActiveRecord::Migration[5.2]
   def change
-    create_table :ordered_products do |t|
+    create_table :ordered_products, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
 
     t.integer :genre_id
     t.integer :order_id

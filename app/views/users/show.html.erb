@@ -22,6 +22,8 @@
         <p class="user__right--email">
           <%= @user.email %>
         </p> 
+        <p><%= link_to '編集', edit_user_path(current_user.id) %></p>
+        <p><%= link_to '退会', user_registration_path, method: :destros %></p>
       </div>
     </div>
   </div><!-- user__top -->
@@ -48,12 +50,15 @@
   <div id="order" class="user__order user__content">
 <% @order.each do |o| %>
   <%= o.created_at %>
+  <labeL>送付先i：<%= o.address.sending_address %></labeL>
+  <%= o.order_status %>
   <% o.ordered_products.each do |op| %>
     <%= op.genre.genre_name %>
     <%= op.product_name %>
     <%= op.artist_name %>
     <%= attachment_image_tag op, :jacket_image %>
     <%= op.price %>
+    <%= op.quantity %>
   <% end %>
 <% end %>
   </div>
