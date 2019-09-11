@@ -18,6 +18,7 @@
 <% else %>
   <p>売り切れ</p>
 <% end %>
+<%= @product.genre.genre_name %>
 <% if @product.sales_status == true %>
   <p>On sale</p>
 <% else %>
