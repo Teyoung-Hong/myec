@@ -11,6 +11,7 @@ class ContactsController < ApplicationController
     redirect_to root_path
   end
 
+
   private
   
   def contact_params

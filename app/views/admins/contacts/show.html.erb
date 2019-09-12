@@ -1,6 +1,15 @@
-<%= @contact.subject %>
-<%= @contact.email %>
-<%= @contact.sender_name %>
-<%= @contact.sender_name_kana %>
-<%= @contact.checking_status %>
-<%= @contact.body %>
+<div class="contact__wrapper">
+  <p><%= @contact.subject %></p>
+  <p><%= @contact.email %></p>
+  <p><%= @contact.sender_name %></p>
+  <p><%= @contact.sender_name_kana %></p>
+  <p><%= @contact.checking_status %></p>
+  <p><%= @contact.body %></p>
+</div>
+<div class="btn__reply">返信する</div>
+<div class="reply__wrapper">
+  <%= form_for @new_contact, url: admins_contact_contact_replies_path(@contact.id) do |c| %>
+    <%= c.text_area :body %>
+    <%= c.submit '送信する' %>
+  <% end %>
+</div>

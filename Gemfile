@@ -91,3 +91,7 @@ gem 'json'
 gem 'mysql2'
 
 gem 'listen', '>= 3.0.5', '< 3.2'
+
+gem 'letter_opener' #後でtest環境に移す
+
+gem 'ransack'

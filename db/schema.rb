@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_044405) do
+ActiveRecord::Schema.define(version: 2019_09_09_072750) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(version: 2019_08_20_044405) do
     t.string "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "contact_replies", force: :cascade do |t|
+    t.integer "contact_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_contact_replies_on_contact_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -92,6 +100,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_044405) do
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
   end
 
   create_table "orders", force: :cascade do |t|
@@ -100,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_044405) do
     t.integer "payway", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "order_status", default: "受付"
   end
 
   create_table "products", force: :cascade do |t|

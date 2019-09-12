@@ -1,0 +1,9 @@
+<%= @contact.sender_name %>様
+
+CD SAMURAI管理局からお問い合わせ内容に対しての返信です。
+
+■本文
+<%= @contact.contact_replies.each do |c| %>
+  <%= c.body %>
+<% end %>
+

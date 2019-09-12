@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # common
   root 'products#index'
   get '/top' => 'users#top', as: 'top'
+  get '/search' => 'products#index', as: 'search'
   resources :users, only: [:show, :edit, :update]
   resource :addresses, only: [:create, :update, :destroy]
   resources :carts, only: [:index, :show, :edit, :update]
@@ -33,7 +34,9 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users, only: [:index]
     resources :products, only: [:new, :create, :edit, :update, :destroy]
-    resources :contacts, only: [:index, :show, :edit, :update, :destroy]
+    resources :contacts, only: [:index, :show, :edit, :update, :destroy] do
+      resource :contact_replies, only: [:create]
+    end
     resources :genres
   end
 

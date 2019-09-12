@@ -2,10 +2,12 @@ class Admins::ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all
+    @new_contact = ContactReply.new
   end
 
   def show
     @contact = Contact.find(params[:id])
+    @new_contact = ContactReply.new
   end
 
   def edit
